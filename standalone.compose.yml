@@ -1,0 +1,20 @@
+version: '3.2'
+services:
+  novnc:
+    image: theasp/novnc:latest
+    environment:
+      - DISPLAY_WIDTH=${WIDTH}
+      - DISPLAY_HEIGHT=${HEIGHT}
+      - RUN_XTERM=no
+    ports:
+      - "8080:8080"
+  standalone-chrome:
+    image: selenium/standalone-chrome:3.141.59
+    environment:
+      - DISPLAY=novnc:0.0
+      - SCREEN_WIDTH=${WIDTH}
+      - SCREEN_HEIGHT=${HEIGHT}
+    depends_on:
+      - novnc
+    ports:
+      - "4444:4444"
