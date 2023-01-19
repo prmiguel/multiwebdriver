@@ -1,6 +1,7 @@
 package com.gtihub.prmiguel.selenium;
 
 import com.github.prmiguel.selenium.MultiWebDriver;
+import com.github.prmiguel.selenium.ScreenGrid;
 import com.github.prmiguel.selenium.WebDriverPool;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -12,7 +13,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        WebDriverPool wdp = new WebDriverPool(3);
+        WebDriverPool wdp = new WebDriverPool(3, ScreenGrid._2x2);
         wd = new MultiWebDriver(wdp);
     }
 
